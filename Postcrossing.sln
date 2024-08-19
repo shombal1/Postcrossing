@@ -2,6 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postcrossing.Api", "Postcrossing.Api\Postcrossing.Api.csproj", "{09019E07-104D-437F-9A02-1555D3E32925}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postcrossing.Storage", "Postcrossing.Storage\Postcrossing.Storage.csproj", "{8A13EC32-A226-480E-AF57-59D5FA84B2B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postcrossing.Storage.DependencyInjection", "Postcrossing.Storage.DependencyInjection\Postcrossing.Storage.DependencyInjection.csproj", "{CC629922-8E5C-4A7C-B71A-B30BD9B09F57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postcrossing.Domain", "Postcrossing.Domain\Postcrossing.Domain.csproj", "{DA4DDE70-4EF9-4861-9F72-A050335FFFAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postcrossing.Domain.DependencyInjection", "Postcrossing.Domain.DependencyInjection\Postcrossing.Domain.DependencyInjection.csproj", "{3968CFE8-0994-451B-AE71-FE564C44B847}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +20,21 @@ Global
 		{09019E07-104D-437F-9A02-1555D3E32925}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09019E07-104D-437F-9A02-1555D3E32925}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09019E07-104D-437F-9A02-1555D3E32925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A13EC32-A226-480E-AF57-59D5FA84B2B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A13EC32-A226-480E-AF57-59D5FA84B2B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A13EC32-A226-480E-AF57-59D5FA84B2B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A13EC32-A226-480E-AF57-59D5FA84B2B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC629922-8E5C-4A7C-B71A-B30BD9B09F57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC629922-8E5C-4A7C-B71A-B30BD9B09F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC629922-8E5C-4A7C-B71A-B30BD9B09F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC629922-8E5C-4A7C-B71A-B30BD9B09F57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA4DDE70-4EF9-4861-9F72-A050335FFFAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA4DDE70-4EF9-4861-9F72-A050335FFFAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA4DDE70-4EF9-4861-9F72-A050335FFFAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA4DDE70-4EF9-4861-9F72-A050335FFFAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3968CFE8-0994-451B-AE71-FE564C44B847}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3968CFE8-0994-451B-AE71-FE564C44B847}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3968CFE8-0994-451B-AE71-FE564C44B847}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3968CFE8-0994-451B-AE71-FE564C44B847}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
