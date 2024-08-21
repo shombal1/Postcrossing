@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Postcrossing.Storage;
@@ -11,9 +12,11 @@ using Postcrossing.Storage;
 namespace Postcrossing.Storage.Migrations
 {
     [DbContext(typeof(PostcrossingDbContext))]
-    partial class PostcrossingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240819164602_RenameModels")]
+    partial class RenameModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,9 +112,6 @@ namespace Postcrossing.Storage.Migrations
                     b.Property<int>("DistrictId")
                         .HasColumnType("integer");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
@@ -203,6 +203,9 @@ namespace Postcrossing.Storage.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<Guid>("AddressId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -213,13 +216,9 @@ namespace Postcrossing.Storage.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<Guid>("ResidentialAddressId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ResidentialAddressId")
-                        .IsUnique();
+                    b.HasIndex("AddressId");
 
                     b.ToTable("Users");
                 });
@@ -325,8 +324,8 @@ namespace Postcrossing.Storage.Migrations
             modelBuilder.Entity("Postcrossing.Storage.Models.UserEntity", b =>
                 {
                     b.HasOne("Postcrossing.Storage.Models.Address.ResidentialAddressEntity", "ResidentialAddress")
-                        .WithOne("User")
-                        .HasForeignKey("Postcrossing.Storage.Models.UserEntity", "ResidentialAddressId")
+                        .WithMany("Users")
+                        .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -354,8 +353,7 @@ namespace Postcrossing.Storage.Migrations
 
             modelBuilder.Entity("Postcrossing.Storage.Models.Address.ResidentialAddressEntity", b =>
                 {
-                    b.Navigation("User")
-                        .IsRequired();
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Postcrossing.Storage.Models.UserEntity", b =>

@@ -8,9 +8,9 @@ public class DistrictEntity
     [MaxLength(100)] public string Name { get; set; } = "";
 
     public int CountyId { get; set; }
-    public CountyEntity County { get; set; }
+    public CountryEntity Country { get; set; }
     
     public ICollection<CityEntity> Cities { get; set; }
     
-    public ICollection<AddressEntity> Addresses { get; set; }
+    public ICollection<ResidentialAddressEntity> Addresses { get; set; }
 }

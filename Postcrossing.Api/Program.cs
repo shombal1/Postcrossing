@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.HttpOverrides;
+using Postcrossing.Api.Middleware;
+using Postcrossing.Domain.DependencyInjection;
 using Postcrossing.Storage.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddStorage(configure.GetConnectionString("DataBase")!);
+builder.Services
+    .AddPostcrossingDomain()
+    .AddStorage(configure.GetConnectionString("DataBase")!);
 
 var app = builder.Build();
 
@@ -24,6 +28,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ErrorHandingMiddleware>();
 
 app.MapControllers();
 app.Run();

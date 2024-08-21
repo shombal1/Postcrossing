@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Postcrossing.Storage;
@@ -11,9 +12,11 @@ using Postcrossing.Storage;
 namespace Postcrossing.Storage.Migrations
 {
     [DbContext(typeof(PostcrossingDbContext))]
-    partial class PostcrossingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240820144829_FixRelationshipBetween_AddressAndUser")]
+    partial class FixRelationshipBetween_AddressAndUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

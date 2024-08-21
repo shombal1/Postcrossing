@@ -4,9 +4,9 @@ using Postcrossing.Storage.Models.Address;
 
 namespace Postcrossing.Storage.Configuration;
 
-public class CountryConfiguration : IEntityTypeConfiguration<CountyEntity>
+public class CountryConfiguration : IEntityTypeConfiguration<CountryEntity>
 {
-    public void Configure(EntityTypeBuilder<CountyEntity> builder)
+    public void Configure(EntityTypeBuilder<CountryEntity> builder)
     {
         builder.HasKey(c => c.Id);
         builder.Property(c => c.Id).ValueGeneratedOnAdd();
@@ -15,6 +15,6 @@ public class CountryConfiguration : IEntityTypeConfiguration<CountyEntity>
             .WithOne(a => a.Country);
 
         builder.HasMany(c => c.Districts)
-            .WithOne(d => d.County);
+            .WithOne(d => d.Country);
     }
 }

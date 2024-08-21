@@ -11,7 +11,7 @@ public class DistrictConfiguration : IEntityTypeConfiguration<DistrictEntity>
         builder.HasKey(d => d.Id);
         builder.Property(d => d.Id).ValueGeneratedOnAdd();
 
-        builder.HasOne(d => d.County)
+        builder.HasOne(d => d.Country)
             .WithMany(c => c.Districts)
             .HasForeignKey(d => d.CountyId);
         

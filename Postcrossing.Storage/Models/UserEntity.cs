@@ -10,8 +10,8 @@ public class UserEntity
     [MaxLength(50)] public string FirstName { get; set; } = "";
     [MaxLength(50)] public string LastName { get; set; } = "";
     
-    public Guid AddressId { get; set; }
-    public AddressEntity Address { get; set; }
+    public Guid ResidentialAddressId { get; set; }
+    public ResidentialAddressEntity ResidentialAddress { get; set; }
     
     public ICollection<DeliveringMessageEntity> DispatchedMessage { get; set; }
     public ICollection<DeliveringMessageEntity> PendingMessages { get; set; }

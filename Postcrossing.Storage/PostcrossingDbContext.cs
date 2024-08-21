@@ -12,8 +12,8 @@ public class PostcrossingDbContext(DbContextOptions<PostcrossingDbContext> optio
     public DbSet<MessageQueueEntity> QueueMessages { get; set; }
     public DbSet<DeliveredMessageEntity> DeliveredMessages { get; set; }
     
-    public DbSet<AddressEntity> Addresses { get; set; }
-    public DbSet<CountyEntity> Countries { get; set; }
+    public DbSet<ResidentialAddressEntity> ResidentialAddresses { get; set; }
+    public DbSet<CountryEntity> Countries { get; set; }
     public DbSet<DistrictEntity> Districts { get; set; }
     public DbSet<CityEntity> Cities { get; set; }
 

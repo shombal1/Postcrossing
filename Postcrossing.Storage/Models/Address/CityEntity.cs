@@ -10,5 +10,5 @@ public class CityEntity
     public int DistrictId { get; set; }
     public DistrictEntity Distric { get; set; }
     
-    public ICollection<AddressEntity> Addresses { get; set; }
+    public ICollection<ResidentialAddressEntity> Addresses { get; set; }
 }

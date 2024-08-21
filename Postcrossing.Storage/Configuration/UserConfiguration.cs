@@ -10,9 +10,9 @@ public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {
         builder.HasKey(u => u.Id);
 
-        builder.HasOne(u => u.Address)
-            .WithMany(a => a.Users)
-            .HasForeignKey(u => u.AddressId);
+        builder.HasOne(u => u.ResidentialAddress)
+            .WithOne(a => a.User)
+            .HasForeignKey<UserEntity>(u=>u.ResidentialAddressId);
         
         builder.HasMany(u => u.RequestMessages)
             .WithOne(m => m.RequestedUser);

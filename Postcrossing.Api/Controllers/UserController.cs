@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Postcrossing.Api.Models;
 using Postcrossing.Domain.Authentication;
+using Postcrossing.Domain.UseCase.CreateUser;
 using Postcrossing.Storage;
 using Postcrossing.Storage.Models;
 
@@ -12,12 +14,18 @@ public class UserController : ControllerBase
 {
     [HttpPost]
     [Route("AddUser")]
-    public async Task<IActionResult> AddUser(CancellationToken cancellationToken)
+    public async Task<IActionResult> AddUser(
+        [FromServices] ICreateUserUseCase useCase,
+        [FromBody] UserDto userDto,
+        CancellationToken cancellationToken)
     {
-        return await Task.FromResult(Ok("ok"));
+        return Ok(await useCase.Execute(
+            new CreateUserCommand(userDto.FistName, userDto.LastName,
+                new CreateResidentialAddressCommand(userDto.AddressDto.CountryName, userDto.AddressDto.DistrictName,
+                    userDto.AddressDto.CityName)), cancellationToken));
     }
-    
-    
+
+
     [HttpPost]
     [Route("SetUser")]
     public async Task<IActionResult> SetUser(
@@ -26,15 +34,15 @@ public class UserController : ControllerBase
         [FromBody] Guid id,
         CancellationToken cancellationToken)
     {
-        UserEntity? user = await dbContext.Users.FirstOrDefaultAsync(u=>u.Id==id,cancellationToken);
-
+        UserEntity? user = await dbContext.Users.FirstOrDefaultAsync(u => u.Id == id, cancellationToken);
+    
         if (user is null)
         {
             return Ok("User not found");
         }
-        
-        identityProvider.Current = new User() { Id = id };
-        
+
+        identityProvider.Current = new Domain.Authentication.User() { Id = id };
+    
         return Ok(user);
     }
 }

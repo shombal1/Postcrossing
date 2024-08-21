@@ -2,7 +2,7 @@
 
 namespace Postcrossing.Storage.Models.Address;
 
-public class CountyEntity
+public class CountryEntity
 {
     public int Id { get; set; }
     [MaxLength(100)] public string Name { get; set; } = "";
@@ -11,5 +11,5 @@ public class CountyEntity
     public bool OpenBorder { get; set; }
 
     public ICollection<DistrictEntity> Districts { get; set; }
-    public ICollection<AddressEntity> Addresses { get; set; }
+    public ICollection<ResidentialAddressEntity> Addresses { get; set; }
 }

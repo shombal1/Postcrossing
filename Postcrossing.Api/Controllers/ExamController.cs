@@ -1,10 +1,9 @@
-﻿using System.Net;
-using System.Net.Sockets;
-using System.Text.Json;
-using Microsoft.AspNetCore.Http.Features;
+﻿using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Postcrossing.Api.Models;
 using Postcrossing.Storage;
 using Postcrossing.Storage.Models.Address;
+
 
 namespace Postcrossing.Api.Controllers;
 
@@ -12,6 +11,18 @@ namespace Postcrossing.Api.Controllers;
 [Route("[controller]")]
 public class ExamController : ControllerBase
 {
+    // [HttpPost]
+    // [Route("AddAddress")]
+    // public async Task<IActionResult> AddAddress(
+    //     [FromServices] ICreateResidentialAddressUseCase useCase,
+    //     [FromBody] Address address,
+    //     CancellationToken cancellationToken)
+    // {
+    //     return Ok(await useCase.Execute(
+    //         new CreateResidentialAddressCommand(address.CountryName, address.DistrictName, address.CityName),
+    //         cancellationToken));
+    // }
+
     [HttpPost]
     [Route("All")]
     public async Task<IActionResult> Get(
@@ -19,11 +30,10 @@ public class ExamController : ControllerBase
         [FromBody] string nameCountry,
         CancellationToken cancellationToken)
     {
-        
         // Dictionary<string, Dictionary<string, HashSet<string>>> miniDataBase =
         //     JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, HashSet<string>>>>(
         //         await System.IO.File.ReadAllTextAsync(
-        //             "D:\\Programs\\VisualStudio\\Projects\\ExelReader\\MiniDataBase25.txt", cancellationToken))!;
+        //             "D:\\Programs\\VisualStudio\\Projects\\ExelReader\\MiniDataBase89.txt", cancellationToken))!;
         //
         //
         // miniDataBase.Remove("-,-");
@@ -35,7 +45,7 @@ public class ExamController : ControllerBase
         //     string code = codeAndCountry[0];
         //     string countryName = codeAndCountry[1];
         //
-        //     var county = dbContext.Countries.Add(new CountyEntity() { Code = code, Name = countryName }).Entity;
+        //     var county = dbContext.Countries.Add(new CountryEntity() { Code = code, Name = countryName }).Entity;
         //     await dbContext.SaveChangesAsync(cancellationToken);
         //     foreach (var (districtName, cities) in districts)
         //     {
@@ -67,8 +77,6 @@ public class ExamController : ControllerBase
         // }
         //
         // await dbContext.SaveChangesAsync(cancellationToken);
-
-        
         
         return Ok("Ashkāsham");
     }
